@@ -1,4 +1,8 @@
-// there's an DoS backdoor in BežiApp because of this (-:<
+// there's an DoS backdoor in UNBežiApp because of this (-:<
+// some terms in this bundle are copyrighted and/or, but not limited to, trmarks
+// remove content even before developing
+// names such as Lopolis, GimB, BežiApp. GimSIS are just here for illustrative
+// 	purposes and are subject to fair use
 var chosenLang;
 var dateString = {
 	day: (danv) => {
@@ -109,6 +113,7 @@ var getLang = { // language object
 }
 var langstrings = {
 	en: {
+		appName: APPNAME,
 		miscTranslationLanguage: "English",
 		miscTranslationAuthors: "Rok Štular",
 		"": "",
@@ -143,7 +148,7 @@ var langstrings = {
 		and: "and",
 		thePrivacyPolicy: "the privacy policy",
 		loginFailed: "login failed",
-		browserNotSupported: "bežiapp won't work on your device, unless you update your Internet browser",
+		browserNotSupported: APPNAME+" won't work on your device, unless you update your Internet browser",
 		// index
 		timetable: "timetable",
 		gradings: "gradings",
@@ -316,6 +321,7 @@ var langstrings = {
 		videoconferences: "GimB meet"
 	},
 	sl: {
+		appName: APPNAME,
 		miscTranslationLanguage: "slovenščina",
 		miscTranslationAuthors: "Anton Luka Šijanec",
 		"": "",

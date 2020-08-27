@@ -1,4 +1,9 @@
 <@?i global@>
+<!-- @begin=html@ vim still interprets this as changelog wtf...
+
+this is the actuall bežiapp changelog, change it to your needs.
+
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google" content="notranslate">
-    <title>Changelog &laquo; BežiApp</title>
+    <title>Changelog &laquo; <@?g app_name@></title>
 
     <!-- Materialize -->
     <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
@@ -35,7 +40,8 @@
 <body>
     <nav class="z-depth-0" id="navigation-main">
         <div class="nav-wrapper container">
-            <b class="app-header-bold">Beži</b><span class="app-header-span">App</span> &raquo; <x-su>changelog</x-su>
+            <b class="app-header-bold"><@?g app_name_1@></b><span
+						class="app-header-span"><@?g app_name_2@></span> &raquo; <x-su>changelog</x-su>
             <span class="right white-text" id="nav-back-button">
                 <i class="material-icons">arrow_back</i>
             </span>

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# you can use this to auto-generate your freenom domains, but I did not test it
+
 # chrome generated this curly script when I was renewing zavij.ga.
 
 curl 'https://my.freenom.com/domains.php?submitrenewals=true' \

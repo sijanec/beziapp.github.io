@@ -21,7 +21,7 @@ async function setErrorReporting(targetE) {
 	});
 }
 
-function shuffleArray(array) {
+function shuffleArray(array) { // if you want options shufled each time. annoyng
 	for (var i = array.length - 1; i > 0; i--) {
 		var j = Math.floor(Math.random() * (i + 1));
 		var temp = array[i];
@@ -31,7 +31,7 @@ function shuffleArray(array) {
 }
 
 function setUIAdditionalOptions(state) {
-	var SENSITIVE_THEMES = {
+	var SENSITIVE_THEMES = { // themes that represent policical parties are shuffd
 		"left": "Left / leva",
 		"right": "Right / desna",
 		"piratska": "Pirate / piratska"
@@ -52,7 +52,7 @@ function setUIAdditionalOptions(state) {
 	M.FormSelect.init(elems, {});
 }
 
-async function setAdditionalOptions(state) {
+async function setAdditionalOptions(state) { // you may show nsfw options now??
 	localforage.setItem("triggerWarningAccepted", state).then((value) => {
 		console.log("TriggerWarning set: " + value);
 		UIAlert(D("triggerWarningSet"), "setAdditionalOptions(): triggerWarningSet");
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 	localforage.getItem("theme").then((value) => {
 		let selectedTheme = value;
 				if(value == null || value.length < 1) {
-					selectedTheme = "themeLight";
+					selectedTheme = "themeLight"; // default theme.
 				}
 		$(`#option-${selectedTheme}`).attr("selected", true);
 	}).catch(() => {});
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 	localforage.getItem("errorReporting").then((value) => {
 		let selectedE = value;
 				if(value == null || value.length < 1) {
-					selectedE = "on";
+					selectedE = "on"; // defaults to reporting yes
 				}
 		$(`#option-${selectedE}`).attr("selected", true);
 	}).catch(() => {});

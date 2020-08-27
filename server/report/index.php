@@ -1,9 +1,11 @@
 <?php
+	$appname = "app";
+	$adminemail = "unset@email.example";
 	header("Content-Type: text/plain");
-	$warning = "this beziapp report service is here to inform the developers of client errors and stores IP address, user agent ".
+	$warning = "this $appname report service is here to inform the developers of client errors and stores IP address, user agent ".
 		"and error details. The error reporting is not mandatory and can be distabled in the settings. If you want to delete any of ".
 		"your personal information submitted to this server or if you want a data dump of your error entries, please send an email".
-		"to the maintainers of this beziapp reporting server (sijanecantonluka@gmail.com). We do not store any other information, ".
+		"to the maintainers of this $appname reporting server ($adminemail). We do not store any other information, ".
 		"such as usernames, so if you have a dynamic IP and it changes, there's no way of proving that you sent the reports. If ".
 		"that's the case, we won't delete or provide any error reports to you. You must have proof of IP address ownership by ".
 		"requesting a special link that we will send you via email when data deletion/dump will be requested. Again, failing the ".
@@ -18,9 +20,9 @@
 	}
 
 	$servername = "localhost";
-	$username = "beziappreports";
+	$username = $appname."reports";
 	$password = "not today!";
-	$dbname = "beziappreports";
+	$dbname = $appname."reports";
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	if ($conn->connect_error) {
 		http_response_code(500);

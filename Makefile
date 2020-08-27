@@ -1,8 +1,8 @@
 default:
-	@echo "*** BežiApp Makefile ***"
+	@echo "*** App Makefile ***"
 	@echo "targets:"
 	@echo "	make prepare	installs dependencies, uses \`sudo apt\`."
-	@echo "	make generate	installs BežiApp to dist/"
+	@echo "	make generate	installs App to dist/"
 	@echo "notes and hacks:"
 	@echo "	\`cp /bin/cp bin/bvr-jsmin\`	if you don't want jsmin (before generate)"
 	@echo "no target specified, exiting ..."
@@ -19,6 +19,7 @@ prepare:
 
 generate:
 	#!/bin/bash
+	rm -rf dist
 	./bin/bvr-compose-html assets/pages-src/ dist/pages/ .html
 	cp -r assets/css dist/
 	cp -r assets/fonts dist/

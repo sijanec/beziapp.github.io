@@ -10,17 +10,9 @@ async function setupStorage(force = false) {
 
 	let promises_update = [
 		localforage.setItem("profile", {}),
-		localforage.setItem("timetable", []),
-		localforage.setItem("teachers", []),
-		localforage.setItem("gradings", []),
-		localforage.setItem("grades", []),
-		localforage.setItem("absences", {}),
-		localforage.setItem("messages", [[], [], []]), // see messages.js:129, commit 8eb9ca9caca30fbbe023243657535ab4088be377
-		localforage.setItem("directory", {}), //\\ well I could remember my own code but I didn't.
-		localforage.setItem("meals", {}),
-		localforage.setItem("chosenLang", "en"),
-		localforage.setItem("theme", "light"),
-		localforage.setItem("errorReporting", "on"),
+		localforage.setItem("chosenLang", "en"),	// default options. if this fails,
+		localforage.setItem("theme", "light"),		// there are still defaults in the
+		localforage.setItem("errorReporting", "on"), // settings.js
 		localforage.setItem("lastUpdate", 0),
 		localforage.setItem("triggerWarningAccepted", false)
 	];

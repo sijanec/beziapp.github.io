@@ -1,11 +1,18 @@
-
-
-
-
-const app_version = "1.0.14.4-beta";
-const previous_commit = "a814ef4e939fe42c49955d920201eb34ba8ca3d0";
-const BEZIAPP_UPDATE_INTERVAL = 300; // update vsakih 300 sekund
-
+>
+>
+>
+>
+>
+>
+>
+>
+>
+// @begin=js@
+const app_version = "1.0.14.4-beta>";
+const previous_commit = "6acd2aca85354c6ba683aebed59d1cf95967865c>";
+const APP_UPDATE_INTERVAL = 300; // update vsakih 300 sekund
+const APPNAME = "UnBežiApp>";
+const ERROR_REPORT_SERVER = "/error-report.php";
 if ("serviceWorker" in navigator) {
 	navigator.serviceWorker.register("/sw.js")
 		.then(() => { })
@@ -30,29 +37,9 @@ if (navigator.serviceWorker) {
 async function UIAlert(usermsg, devmsg) {
 	if (true) { // če bo kakšen dev switch?
 		M.toast({ html: usermsg });
-		console.log(`[BežiApp UIAlert] ${usermsg} ${devmsg}`);
+		console.log(`[`+APPNAME+` UIAlert] ${usermsg} ${devmsg}`);
 	} else {
 		M.toast({ html: `${usermsg} ${devmsg}` });
-	}
-}
-
-/**
- * Handles GSEC error - notifies the user and prints a console message
- * @param {Object} err GSEC error object
- */
-function gsecErrorHandlerUI(err) {
-	console.log(`gsecErrorHanderUI: handling ${err}`);
-	if (err == GSEC_ERR_NET || err == GSEC_ERR_NET_POSTBACK_GET ||
-		err == GSEC_ERR_NET_POSTBACK_POST) {
-
-		UIAlert(D("gsecErrNet"));
-	} else if (err == GSEC_ERR_LOGIN) {
-		UIAlert(D("gsecErrLogin"));
-		localforage.setItem("logged_in", false).then(() => {
-			window.location.replace("/index.html");
-		});
-	} else {
-		UIAlert(D("gsecErrOther"));
 	}
 }
 
@@ -92,7 +79,7 @@ var error_report_function = async function (msg, url, lineNo, columnNo, error) {
 				data.client.username = await localforage.getItem("username");
 
 				data.type = "error";
-				$.post("https://beziapp-report.gimb.tk/", data);
+				$.post(ERROR_REPORT_SERVER, data);
 			} else {
 				console.log("error not reported as reporting is disabled!");
 			}
@@ -108,7 +95,7 @@ window.onunhandledrejection = error_report_function;
 
 async function try_app_update() {
 	localforage.getItem("lastUpdate").then((data) => {
-		if (Math.floor(Date.now() / 1000) > Number(data) + BEZIAPP_UPDATE_INTERVAL) {
+		if (Math.floor(Date.now() / 1000) > Number(data) + APP_UPDATE_INTERVAL) {
 			// trigger an update
 			localforage.setItem("lastUpdate", Math.floor(Date.now() / 1000)).then(() => {
 				update_app_function();
@@ -123,5 +110,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		try_app_update();
 
-	}, 1000 * BEZIAPP_UPDATE_INTERVAL);
-})
+	}, 1000 * APP_UPDATE_INTERVAL);
+});

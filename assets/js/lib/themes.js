@@ -1,3 +1,7 @@
+//	note: colors here are copyright SD, PrtSi, SDS. do not distribute.
+//	colors of light, dark and night are also copyrighted, see css file
+//	aka change colors even before development.
+
 const THEME_COLOR_SCHEMES = {
     light: {
         "color-primary": "rgba(0, 128, 83, 1)",

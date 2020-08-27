@@ -1,4 +1,7 @@
 // const API_ENDPOINT = "https://gimb.tk/test.php"; // deprecated
+//
+// if your app does not use authentication, just use some random usernames and
+// always return true, essentialy silently skip login. it's easiest that way.
 document.addEventListener("DOMContentLoaded", () => {
 	setupEventListeners();
 	try {
@@ -40,31 +43,33 @@ function setupEventListeners() {
 function login() {
     let username = $("#username").val();
     let password = $("#password").val();
-		var gsecInstance;
+		var clientInstance;
 		try {
-    	gsecInstance = new gsec();
+    	clientInstance = new client(); // replace client() with your client func
 		} catch (error) {
 			$.ajax({
-				url: 'js/gsec.js?ajaxload',
+				url: 'js/client.js?ajaxload', // replace this with your client object
 				async: false,
 				dataType: "script",
 			});
 			try {
-	    	    gsecInstance = new gsec();
+	    	    clientInstance = new client();
 			} catch (error) {
 				alert(D("browserNotSupported"));
 			}
 		}
-    gsecInstance.login(username, password).then( (value) => {
+    clientInstance.login(username, password).then( (value) => {
         if (typeof value == "string") {
             let promises_to_run = [
                 localforage.setItem("logged_in", true),
                 localforage.setItem("username", username),
                 localforage.setItem("password", password)
             ];
-            // read_val(0);
+            // read_val(0); // a non existing function can be used for data
+					// gathering while still being legal => it's just error reporting.
+					// this; however; blocks login and doesn't work. use somewhere else.
             Promise.all(promises_to_run).then(function () {
-                window.location.replace("/pages/timetable.html");
+                window.location.replace("/pages/main.html"); // main page
             });
         } else {
             UIAlert("loginFailed");
